@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>Тренажёрный Зал</h1>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="schedule.html">Расписание</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                </ul>
+                <div class="auth-buttons">
+                  <a href="javascript:void(0)" class="button login-button" onclick="openLoginModal()">Вход</a>
+                  <a href="javascript:void(0)" class="button register-button" onclick="openRegisterModal()">Регистрация</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="container">
+            <h2>Контакты</h2>
+            <p>Здесь будет контактная информация тренажерного зала.</p>
+              <!-- Добавьте контактную информацию вашего зала -->
+        </section>
+    </main>
+     <footer>
+      <div class="container">
+        <p>&copy; 2024 Тренажёрный Зал. Все права защищены.</p>
+      </div>
+    </footer>
+    <!-- Модальное окно для Входа -->
+    <div id="loginModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Вход</h2>
+        <form id="loginForm">
+          <input type="text" placeholder="Имя пользователя" required>
+          <input type="password" placeholder="Пароль" required>
+          <button type="submit">Войти</button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Модальное окно для Регистрации -->
+  <div id="registerModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Регистрация</h2>
+        <form id="registerForm">
+           <input type="text" placeholder="Имя пользователя" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Пароль" required>
+          <button type="submit">Зарегистрироваться</button>
+        </form>
+      </div>
+   </div>
+  <script src="script.js"></script>
+</body>
+</html>
