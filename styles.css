@@ -197,11 +197,18 @@ body {
   }
   
   /* Стили для слайдера */
+
+  main{
+    padding :0;
+    matgin:0;
+    background-color: #333;
+  }
   .slider-container {
   max-width: 100%;
   position: relative;
   margin: 0 auto 20px; /* Отступ снизу*/
   overflow: hidden;
+  padding:0 200px 0 200px;
   }
   
   .slider {
