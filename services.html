@@ -3,66 +3,879 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Услуги</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Услуги - Спортивный комплекс "Фитнес-Хаус"</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        nav h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .button {
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .login-button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .login-button:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .register-button {
+            background-color: var(--accent);
+            border: 2px solid var(--accent);
+            color: white;
+        }
+        
+        .register-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .services {
+            margin: 4rem 0;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-info {
+            padding: 1.5rem;
+        }
+        
+        .service-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .service-info p {
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        
+        .service-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-price {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+        
+        .service-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .service-button:hover {
+            background-color: var(--primary);
+        }
+        
+        .facilities {
+            background-color: var(--light);
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+        
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .facility-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facility-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .facility-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .facility-card p {
+            color: #777;
+        }
+        
+        .testimonials {
+            margin: 4rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            margin-right: 1rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            color: white;
+        }
+        
+        .newsletter h2::after {
+            background-color: var(--accent);
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #c0392b;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-social a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-social a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalopen 0.4s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--accent);
+        }
+        
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .modal input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .modal button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .modal button:hover {
+            background-color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 0.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="container">
-                <h1>Спортивный комплекс</h1>
+                <h1><i class="fas fa-dumbbell"></i> Спортивный комплекс "Фитнес-Хаус"</h1>
                 <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li><a href="services.html">Услуги</a></li>
-                    <li><a href="schedule.html">Расписание</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+                    <li><a href="services.html" class="active"><i class="fas fa-dumbbell"></i> Услуги</a></li>
+                    <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> Расписание</a></li>
+                    <li><a href="contact.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
                 </ul>
-                 <div class="auth-buttons">
-                  <a href="javascript:void(0)" class="button login-button" onclick="openLoginModal()">Вход</a>
-                  <a href="javascript:void(0)" class="button register-button" onclick="openRegisterModal()">Регистрация</a>
+                <div class="auth-buttons">
+                    <a href="javascript:void(0)" class="button login-button" onclick="openLoginModal()"><i class="fas fa-sign-in-alt"></i> Вход</a>
+                    <a href="javascript:void(0)" class="button register-button" onclick="openRegisterModal()"><i class="fas fa-user-plus"></i> Регистрация</a>
                 </div>
             </div>
         </nav>
     </header>
+    
     <main>
-        <section class="container">
-            <h2>Наши услуги</h2>
-            <p>Отжимания</p>
-               <!-- Добавьте подробную информацию о ваших услугах -->
-        </section>
+        <div class="container">
+            <section class="hero">
+                <h1>Наши услуги</h1>
+                <p>Спортивный комплекс "Фитнес-Хаус" предлагает широкий спектр услуг для поддержания здоровья и хорошей физической формы.</p>
+                <a href="#pricing" class="cta-button">Записаться</a>
+            </section>
+            
+            <section class="services">
+                <h2>Основные услуги</h2>
+                <p class="text-center">Выберите подходящую для вас программу тренировок</p>
+                
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="service-info">
+                            <h3>Тренажерный зал</h3>
+                            <p>Современное оборудование от ведущих мировых производителей для всех групп мышц.</p>
+                            <div class="service-meta">
+                                <span><i class="fas fa-clock"></i> 7:00 - 23:00</span>
+                                <span class="service-price">от 2 500 руб/мес</span>
+                            </div>
+                            <a href="#" class="service-button">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');"></div>
+                        <div class="service-info">
+                            <h3>Групповые занятия</h3>
+                            <p>Йога, пилатес, аэробика, танцы, кроссфит и многое другое в группах до 15 человек.</p>
+                            <div class="service-meta">
+                                <span><i class="fas fa-clock"></i> По расписанию</span>
+                                <span class="service-price">от 300 руб/занятие</span>
+                            </div>
+                            <a href="#" class="service-button">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');"></div>
+                        <div class="service-info">
+                            <h3>Персональные тренировки</h3>
+                            <p>Индивидуальный подход и программа тренировок, разработанная специально для вас.</p>
+                            <div class="service-meta">
+                                <span><i class="fas fa-clock"></i> По записи</span>
+                                <span class="service-price">от 1 500 руб/тренировка</span>
+                            </div>
+                            <a href="#" class="service-button">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');"></div>
+                        <div class="service-info">
+                            <h3>Детский фитнес</h3>
+                            <p>Специальные программы для детей от 3 лет: гимнастика, единоборства, танцы.</p>
+                            <div class="service-meta">
+                                <span><i class="fas fa-clock"></i> 16:00 - 20:00</span>
+                                <span class="service-price">от 2 000 руб/мес</span>
+                            </div>
+                            <a href="#" class="service-button">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');"></div>
+                        <div class="service-info">
+                            <h3>Бассейн и аквааэробика</h3>
+                            <p>25-метровый бассейн, аквааэробика, обучение плаванию для взрослых и детей.</p>
+                            <div class="service-meta">
+                                <span><i class="fas fa-clock"></i> 8:00 - 22:00</span>
+                                <span class="service-price">от 500 руб/посещение</span>
+                            </div>
+                            <a href="#" class="service-button">Подробнее</a>
+                        </div>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');"></div>
+                        <div class="service-info">
+                            <h3>SPA и массаж</h3>
+                            <p>Расслабляющие и лечебные массажи, сауна, хаммам, соляная комната.</p>
+                            <div class="service-meta">
+                                <span><i class="fas fa-clock"></i> 10:00 - 21:00</span>
+                                <span class="service-price">от 1 200 руб/сеанс</span>
+                            </div>
+                            <a href="#" class="service-button">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="facilities">
+                <div class="container">
+                    <h2>Наше оборудование и помещения</h2>
+                    <p class="text-center">Современная инфраструктура для комфортных тренировок</p>
+                    
+                    <div class="facility-grid">
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <h3>Тренажеры</h3>
+                            <p>Более 100 современных тренажеров от TechnoGym, Hammer Strength и Life Fitness</p>
+                        </div>
+                        
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-swimming-pool"></i>
+                            </div>
+                            <h3>Бассейн</h3>
+                            <p>25-метровый бассейн с 4 дорожками и зоной для аквааэробики</p>
+                        </div>
+                        
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <h3>SPA-зона</h3>
+                            <p>Финская сауна, турецкий хаммам, соляная комната и массажные кабинеты</p>
+                        </div>
+                        
+                        <div class="facility-card">
+                            <div class="facility-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3>Фитнес-бар</h3>
+                            <p>Полезные перекусы, протеиновые коктейли и спортивное питание</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="testimonials">
+                <h2>Отзывы о наших услугах</h2>
+                <p class="text-center">Что говорят наши клиенты о качестве наших услуг</p>
+                
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>Занимаюсь персональными тренировками с Дмитрием уже 6 месяцев. Результат превзошел все ожидания - минус 12 кг, рельефные мышцы и отличное самочувствие. Тренер профессионал, всегда подбирает оптимальную нагрузку.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/men/32.jpg');"></div>
+                            <div class="author-info">
+                                <h4>Сергей Волков</h4>
+                                <p>Клиент 6 месяцев</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>Очень нравятся групповые занятия по йоге с Екатериной. После каждого занятия чувствую себя обновленной. За год занятий исчезли боли в спине, улучшилась осанка и гибкость. Рекомендую всем!</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/women/44.jpg');"></div>
+                            <div class="author-info">
+                                <h4>Анна Ковалева</h4>
+                                <p>Клиент 1 год</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-text">
+                            <p>Привожу сына на детский фитнес уже второй год. Вижу, как он стал более дисциплинированным, сильным и уверенным в себе. Тренеры умеют найти подход к детям, занятия проходят весело и продуктивно.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-img" style="background-image: url('https://randomuser.me/api/portraits/women/68.jpg');"></div>
+                            <div class="author-info">
+                                <h4>Ольга Морозова</h4>
+                                <p>Клиент 2 года</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="newsletter">
+                <h2>Узнайте о новых услугах первыми</h2>
+                <p>Подпишитесь на рассылку и получайте информацию о новых программах, акциях и специальных предложениях.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Ваш email" required>
+                    <button type="submit">Подписаться</button>
+                </form>
+            </section>
+        </div>
     </main>
-     <footer>
-      <div class="container">
-        <p>&copy; 2024 Тренажёрный Зал. Все права защищены.</p>
-      </div>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О нас</h3>
+                    <ul>
+                        <li><a href="#">История</a></li>
+                        <li><a href="#">Команда</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                        <li><a href="#">Блог</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#">Тренажерный зал</a></li>
+                        <li><a href="#">Групповые занятия</a></li>
+                        <li><a href="#">Персональные тренировки</a></li>
+                        <li><a href="#">Детский фитнес</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>г. Москва, ул. Спортивная, д. 15</li>
+                        <li>+7 (495) 123-45-67</li>
+                        <li>info@fitnesshouse.ru</li>
+                        <li>Пн-Вс: 7:00 - 23:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-vk"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Спортивный комплекс "Фитнес-Хаус". Все права защищены.</p>
+            </div>
+        </div>
     </footer>
-    <!-- Модальное окно для Входа -->
+    
+    <!-- Модальное окно входа -->
     <div id="loginModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Вход</h2>
-        <form id="loginForm">
-          <input type="text" placeholder="Имя пользователя" required>
-          <input type="password" placeholder="Пароль" required>
-          <button type="submit">Войти</button>
-        </form>
-      </div>
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Вход в аккаунт</h2>
+            <form>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">Нет аккаунта? <a href="javascript:void(0)" onclick="openRegisterModal()">Зарегистрируйтесь</a></p>
+        </div>
     </div>
-  
-    <!-- Модальное окно для Регистрации -->
-  <div id="registerModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Регистрация</h2>
-        <form id="registerForm">
-           <input type="text" placeholder="Имя пользователя" required>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Пароль" required>
-          <button type="submit">Зарегистрироваться</button>
-        </form>
-      </div>
-   </div>
-  <script src="script.js"></script>
+    
+    <!-- Модальное окно регистрации -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Регистрация</h2>
+            <form>
+                <input type="text" placeholder="Имя" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Пароль" required>
+                <input type="password" placeholder="Подтвердите пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">Уже есть аккаунт? <a href="javascript:void(0)" onclick="openLoginModal()">Войдите</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // Функции для работы с модальными окнами
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+        
+        function openRegisterModal() {
+            document.getElementById('registerModal').style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>

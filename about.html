@@ -3,66 +3,878 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>О нас - Фитнес-Хаус</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        nav h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .button {
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .login-button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .login-button:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        .register-button {
+            background-color: var(--accent);
+            border: 2px solid var(--accent);
+            color: white;
+        }
+        
+        .register-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+        
+        main {
+            padding: 3rem 0;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        /* Стили для страницы "О нас" */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 4rem;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text {
+            flex: 1;
+            padding: 2rem;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .about-mission {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .about-mission h2 {
+            color: white;
+        }
+        
+        .about-mission h2::after {
+            background-color: var(--accent);
+        }
+        
+        .team-section {
+            margin-bottom: 3rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .team-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-info p {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .team-social a {
+            color: var(--dark);
+            transition: color 0.3s;
+        }
+        
+        .team-social a:hover {
+            color: var(--accent);
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .facilities-section {
+            margin-bottom: 3rem;
+        }
+        
+        .facility-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background-color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-button.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .tab-button:hover:not(.active) {
+            background-color: var(--light);
+        }
+        
+        .facility-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .facility-content.active {
+            display: block;
+        }
+        
+        .facility-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .facility-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .facility-info {
+            padding: 1.5rem;
+        }
+        
+        .facility-info h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .testimonials-section {
+            background-color: white;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            text-align: center;
+            padding: 1rem;
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--secondary);
+            opacity: 0.5;
+        }
+        
+        .testimonial-author {
+            font-weight: 500;
+            color: var(--primary);
+        }
+        
+        .testimonial-role {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--secondary);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            animation: modalopen 0.4s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: var(--accent);
+        }
+        
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .modal input {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .modal button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .modal button:hover {
+            background-color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .auth-buttons {
+                width: 100%;
+                justify-content: flex-end;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="container">
-                <h1>Спортивный комплекс</h1>
+                <h1><i class="fas fa-dumbbell"></i> Спортивный комплекс "Фитнес-Хаус"</h1>
                 <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li><a href="services.html">Услуги</a></li>
-                    <li><a href="schedule.html">Расписание</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> О нас</a></li>
+                    <li><a href="services.html"><i class="fas fa-dumbbell"></i> Услуги</a></li>
+                    <li><a href="schedule.html"><i class="fas fa-calendar-alt"></i> Расписание</a></li>
+                    <li><a href="contact.html"><i class="fas fa-phone-alt"></i> Контакты</a></li>
                 </ul>
                 <div class="auth-buttons">
-                  <a href="javascript:void(0)" class="button login-button" onclick="openLoginModal()">Вход</a>
-                  <a href="javascript:void(0)" class="button register-button" onclick="openRegisterModal()">Регистрация</a>
+                    <a href="javascript:void(0)" class="button login-button" onclick="openLoginModal()"><i class="fas fa-sign-in-alt"></i> Вход</a>
+                    <a href="javascript:void(0)" class="button register-button" onclick="openRegisterModal()"><i class="fas fa-user-plus"></i> Регистрация</a>
                 </div>
             </div>
         </nav>
     </header>
+    
     <main>
-        <section class="container">
-            <h2>О нас</h2>
-            <p>Здесь будет подробная информация о тренажёрном зале.</p>
-            <!-- Добавьте подробную информацию о вашем зале -->
-        </section>
+        <div class="container">
+            <section class="about-hero">
+                <h1>О спортивном комплексе "Фитнес-Хаус"</h1>
+                <p>Мы создаем пространство, где каждый может достичь своих спортивных целей в комфортной и мотивирующей атмосфере</p>
+            </section>
+            
+            <section class="about-section">
+                <div class="about-text">
+                    <h2>Наша история</h2>
+                    <p>"Фитнес-Хаус" был основан в 2010 году группой энтузиастов, которые верили, что фитнес должен быть доступен каждому. Начиная с небольшого зала площадью 200 кв.м, сегодня мы выросли в современный спортивный комплекс площадью более 5000 кв.м.</p>
+                    <p>За эти годы мы помогли тысячам людей изменить свою жизнь к лучшему, обрести здоровье и уверенность в себе. Наш комплекс постоянно развивается, внедряя новые технологии и программы тренировок.</p>
+                    <p>Мы гордимся тем, что создали не просто фитнес-клуб, а настоящее сообщество единомышленников, где каждый чувствует себя частью большой семьи.</p>
+                </div>
+                <div class="about-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+            </section>
+            
+            <section class="about-mission">
+                <h2>Наша миссия</h2>
+                <p>Мы стремимся вдохновлять людей на здоровый образ жизни, предоставляя профессиональные услуги в области фитнеса и wellness. Наша цель - сделать спорт доступным, приятным и эффективным для каждого, независимо от возраста и уровня подготовки.</p>
+            </section>
+            
+            <section class="stats-section">
+                <div class="container">
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number">12+</div>
+                            <div class="stat-label">Лет опыта</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5000+</div>
+                            <div class="stat-label">Довольных клиентов</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">30+</div>
+                            <div class="stat-label">Профессиональных тренеров</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Групповых программ</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="team-section">
+                <h2>Наша команда</h2>
+                <p class="about-intro" style="text-align: center; margin-bottom: 2rem;">Профессиональные тренеры и инструкторы с многолетним опытом работы помогут вам достичь поставленных целей</p>
+                
+                <div class="team-grid">
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="team-info">
+                            <h3>Александр Петров</h3>
+                            <p>Главный тренер</p>
+                            <p>Специализация: силовые тренировки, кроссфит</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-vk"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="team-info">
+                            <h3>Екатерина Смирнова</h3>
+                            <p>Инструктор по йоге</p>
+                            <p>Специализация: хатха-йога, пилатес</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-vk"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="team-info">
+                            <h3>Михаил Иванов</h3>
+                            <p>Тренер по плаванию</p>
+                            <p>Специализация: аквааэробика, реабилитация</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-vk"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-card">
+                        <div class="team-image" style="background-image: url('https://images.unsplash.com/photo-1519501025274-1ba3f387bf0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="team-info">
+                            <h3>Ольга Кузнецова</h3>
+                            <p>Диетолог</p>
+                            <p>Специализация: спортивное питание, коррекция веса</p>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-vk"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="facilities-section">
+                <h2>Наши помещения</h2>
+                <p class="about-intro" style="text-align: center; margin-bottom: 2rem;">Современное оборудование и комфортные зоны для всех видов тренировок</p>
+                
+                <div class="facility-tabs">
+                    <button class="tab-button active" onclick="openFacilityTab('gym')">Тренажерный зал</button>
+                    <button class="tab-button" onclick="openFacilityTab('pool')">Бассейн</button>
+                    <button class="tab-button" onclick="openFacilityTab('group')">Групповые занятия</button>
+                    <button class="tab-button" onclick="openFacilityTab('spa')">SPA-зона</button>
+                </div>
+                
+                <div id="gym" class="facility-content active">
+                    <div class="facility-card">
+                        <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="facility-info">
+                            <h3>Тренажерный зал премиум-класса</h3>
+                            <p>Наш тренажерный зал площадью 1500 кв.м оборудован техникой от ведущих мировых производителей: TechnoGym, Hammer Strength, Life Fitness. Здесь вы найдете все необходимое для эффективных тренировок любого уровня сложности.</p>
+                            <p>Отдельные зоны для кардио, силовых трениров и функционального тренинга. Персональные консультации с тренерами помогут вам составить оптимальную программу занятий.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pool" class="facility-content">
+                    <div class="facility-card">
+                        <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1551969014-7d2c4cddf0b6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="facility-info">
+                            <h3>25-метровый бассейн</h3>
+                            <p>Наш бассейн соответствует всем современным стандартам. Температура воды поддерживается на уровне 28°C, что обеспечивает комфортные условия для плавания.</p>
+                            <p>Предлагаем индивидуальные и групповые занятия с профессиональными тренерами, аквааэробику, программы реабилитации после травм. Для детей работают группы обучения плаванию.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="group" class="facility-content">
+                    <div class="facility-card">
+                        <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="facility-info">
+                            <h3>Зал групповых программ</h3>
+                            <p>Просторный зал площадью 300 кв.м с профессиональным покрытием и зеркальными стенами. Здесь проходят более 50 различных групповых занятий: от классической аэробики до современных направлений, таких как TRX, кроссфит и зумба.</p>
+                            <p>Наши инструкторы помогут вам подобрать программу, соответствующую вашему уровню подготовки и целям.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="spa" class="facility-content">
+                    <div class="facility-card">
+                        <div class="facility-image" style="background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                        <div class="facility-info">
+                            <h3>SPA-зона для восстановления</h3>
+                            <p>После интенсивных тренировок предлагаем вам расслабиться в нашей SPA-зоне, которая включает финскую сауну, турецкий хамам, соляную комнату и зону отдыха с травяными чаями.</p>
+                            <p>Также доступны услуги профессиональных массажистов и косметологов. Идеальное место для восстановления сил и релаксации.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="testimonials-section">
+                <h2>Отзывы наших клиентов</h2>
+                <div class="testimonials-slider">
+                    <div class="testimonial active">
+                        <div class="testimonial-text">
+                            Занимаюсь в "Фитнес-Хаусе" уже третий год. За это время не только привел себя в форму, но и нашел новых друзей. Тренеры - настоящие профессионалы, всегда подскажут и помогут. Особенно нравится бассейн и групповые занятия по кроссфиту.
+                        </div>
+                        <div class="testimonial-author">Дмитрий Соколов</div>
+                        <div class="testimonial-role">Клиент с 2018 года</div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            После рождения ребенка долго не могла прийти в форму. Спасибо тренеру Екатерине за индивидуальный подход! За 6 месяцев сбросила 15 кг, чувствую себя прекрасно. Атмосфера в клубе очень дружелюбная, всегда прихожу с удовольствием.
+                        </div>
+                        <div class="testimonial-author">Анна Ковалева</div>
+                        <div class="testimonial-role">Клиент с 2020 года</div>
+                    </div>
+                    
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            Как врач рекомендую "Фитнес-Хаус" своим пациентам для реабилитации после травм. Отличный бассейн и квалифицированные тренеры по лечебной физкультуре. Сам посещаю тренажерный зал 3 раза в неделю - лучшее место для поддержания здоровья в Москве!
+                        </div>
+                        <div class="testimonial-author">Сергей Власов</div>
+                        <div class="testimonial-role">Врач-ортопед, клиент с 2019 года</div>
+                    </div>
+                    
+                    <div class="slider-controls">
+                        <div class="slider-dot active" onclick="currentSlide(1)"></div>
+                        <div class="slider-dot" onclick="currentSlide(2)"></div>
+                        <div class="slider-dot" onclick="currentSlide(3)"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
+    
     <footer>
         <div class="container">
-          <p>&copy; 2024 Тренажёрный Зал. Все права защищены.</p>
+            <p>&copy; 2023 Спортивный комплекс "Фитнес-Хаус". Все права защищены.</p>
+            <div style="margin-top: 1rem;">
+                <a href="#" style="color: white; margin: 0 0.5rem;"><i class="fab fa-vk"></i></a>
+                <a href="#" style="color: white; margin: 0 0.5rem;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: white; margin: 0 0.5rem;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color: white; margin: 0 0.5rem;"><i class="fab fa-youtube"></i></a>
+            </div>
         </div>
     </footer>
-    <!-- Модальное окно для Входа -->
+    
+    <!-- Модальное окно входа -->
     <div id="loginModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Вход</h2>
-        <form id="loginForm">
-          <input type="text" placeholder="Имя пользователя" required>
-          <input type="password" placeholder="Пароль" required>
-          <button type="submit">Войти</button>
-        </form>
-      </div>
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Вход в личный кабинет</h2>
+            <form>
+                <input type="email" placeholder="Электронная почта" required>
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit">Войти</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">Еще нет аккаунта? <a href="javascript:void(0)" onclick="closeModal('loginModal'); openRegisterModal()" style="color: var(--secondary);">Зарегистрируйтесь</a></p>
+        </div>
     </div>
-  
-    <!-- Модальное окно для Регистрации -->
-  <div id="registerModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Регистрация</h2>
-        <form id="registerForm">
-           <input type="text" placeholder="Имя пользователя" required>
-          <input type="email" placeholder="Email" required>
-          <input type="password" placeholder="Пароль" required>
-          <button type="submit">Зарегистрироваться</button>
-        </form>
-      </div>
-   </div>
-  <script src="script.js"></script>
+    
+    <!-- Модальное окно регистрации -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <h2>Регистрация</h2>
+            <form>
+                <input type="text" placeholder="Имя" required>
+                <input type="email" placeholder="Электронная почта" required>
+                <input type="tel" placeholder="Телефон">
+                <input type="password" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">Уже есть аккаунт? <a href="javascript:void(0)" onclick="closeModal('registerModal'); openLoginModal()" style="color: var(--secondary);">Войдите</a></p>
+        </div>
+    </div>
+    
+    <script>
+        // Функции для модальных окон
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+        
+        function openRegisterModal() {
+            document.getElementById('registerModal').style.display = 'block';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+        
+        // Функции для табов помещений
+        function openFacilityTab(tabName) {
+            var i;
+            var tabContents = document.getElementsByClassName("facility-content");
+            for (i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+        
+        // Функции для слайдера отзывов
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("testimonial");
+            var dots = document.getElementsByClassName("slider-dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            slides[slideIndex-1].classList.add("active");
+            dots[slideIndex-1].classList.add("active");
+        }
+        
+        // Автоматическая смена слайдов
+        setInterval(function() {
+            slideIndex++;
+            if (slideIndex > 3) { slideIndex = 1 }
+            showSlides(slideIndex);
+        }, 5000);
+    </script>
 </body>
 </html>
