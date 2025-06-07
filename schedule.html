@@ -327,6 +327,15 @@
                 padding: 0.5rem;
             }
         }
+
+        /* Добавлено: скрытие таблиц по умолчанию */
+        .schedule-day {
+            display: none;
+        }
+        
+        .schedule-day.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -362,70 +371,322 @@
                 <h2>Групповые занятия</h2>
                 
                 <div class="schedule-tabs">
-                    <button class="tab-button active">Понедельник</button>
-                    <button class="tab-button">Вторник</button>
-                    <button class="tab-button">Среда</button>
-                    <button class="tab-button">Четверг</button>
-                    <button class="tab-button">Пятница</button>
-                    <button class="tab-button">Суббота</button>
-                    <button class="tab-button">Воскресенье</button>
+                    <button class="tab-button active" data-day="monday">Понедельник</button>
+                    <button class="tab-button" data-day="tuesday">Вторник</button>
+                    <button class="tab-button" data-day="wednesday">Среда</button>
+                    <button class="tab-button" data-day="thursday">Четверг</button>
+                    <button class="tab-button" data-day="friday">Пятница</button>
+                    <button class="tab-button" data-day="saturday">Суббота</button>
+                    <button class="tab-button" data-day="sunday">Воскресенье</button>
                 </div>
                 
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>Время</th>
-                            <th>Занятие</th>
-                            <th>Тренер</th>
-                            <th>Зал</th>
-                            <th>Запись</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>07:00 - 08:00</td>
-                            <td><span class="class-type yoga">Йога</span> Утренний поток</td>
-                            <td class="trainer">Анна С.</td>
-                            <td>Зал 2</td>
-                            <td><a href="#" class="button login-button">Записаться</a></td>
-                        </tr>
-                        <tr>
-                            <td>09:00 - 10:00</td>
-                            <td><span class="class-type pilates">Пилатес</span> Для начинающих</td>
-                            <td class="trainer">Елена К.</td>
-                            <td>Зал 1</td>
-                            <td><a href="#" class="button login-button">Записаться</a></td>
-                        </tr>
-                        <tr>
-                            <td>12:00 - 13:00</td>
-                            <td><span class="class-type dance">Танцы</span> Zumba Fitness</td>
-                            <td class="trainer">Мария Л.</td>
-                            <td>Зал 3</td>
-                            <td><a href="#" class="button login-button">Записаться</a></td>
-                        </tr>
-                        <tr>
-                            <td>17:00 - 18:00</td>
-                            <td><span class="class-type crossfit">Кроссфит</span> Functional</td>
-                            <td class="trainer">Дмитрий П.</td>
-                            <td>Зал 4</td>
-                            <td class="full">Группа заполнена</td>
-                        </tr>
-                        <tr>
-                            <td>18:30 - 19:30</td>
-                            <td><span class="class-type cycling">Сайклинг</span> Pro Level</td>
-                            <td class="trainer">Иван М.</td>
-                            <td>Зал 5</td>
-                            <td><a href="#" class="button login-button">Записаться</a></td>
-                        </tr>
-                        <tr>
-                            <td>20:00 - 21:00</td>
-                            <td><span class="class-type yoga">Йога</span> Вечерняя релаксация</td>
-                            <td class="trainer">Анна С.</td>
-                            <td>Зал 2</td>
-                            <td><a href="#" class="button login-button">Записаться</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Понедельник -->
+                <div id="monday" class="schedule-day active">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Занятие</th>
+                                <th>Тренер</th>
+                                <th>Зал</th>
+                                <th>Запись</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>07:00 - 08:00</td>
+                                <td><span class="class-type yoga">Йога</span> Утренний поток</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>09:00 - 10:00</td>
+                                <td><span class="class-type pilates">Пилатес</span> Для начинающих</td>
+                                <td class="trainer">Елена К.</td>
+                                <td>Зал 1</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>12:00 - 13:00</td>
+                                <td><span class="class-type dance">Танцы</span> Zumba Fitness</td>
+                                <td class="trainer">Мария Л.</td>
+                                <td>Зал 3</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>17:00 - 18:00</td>
+                                <td><span class="class-type crossfit">Кроссфит</span> Functional</td>
+                                <td class="trainer">Дмитрий П.</td>
+                                <td>Зал 4</td>
+                                <td class="full">Группа заполнена</td>
+                            </tr>
+                            <tr>
+                                <td>18:30 - 19:30</td>
+                                <td><span class="class-type cycling">Сайклинг</span> Pro Level</td>
+                                <td class="trainer">Иван М.</td>
+                                <td>Зал 5</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>20:00 - 21:00</td>
+                                <td><span class="class-type yoga">Йога</span> Вечерняя релаксация</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Вторник -->
+                <div id="tuesday" class="schedule-day">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Занятие</th>
+                                <th>Тренер</th>
+                                <th>Зал</th>
+                                <th>Запись</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>07:30 - 08:30</td>
+                                <td><span class="class-type pilates">Пилатес</span> Утренний</td>
+                                <td class="trainer">Елена К.</td>
+                                <td>Зал 1</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>10:00 - 11:00</td>
+                                <td><span class="class-type yoga">Йога</span> Хатха</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>16:00 - 17:00</td>
+                                <td><span class="class-type dance">Танцы</span> Латина</td>
+                                <td class="trainer">Мария Л.</td>
+                                <td>Зал 3</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>18:00 - 19:00</td>
+                                <td><span class="class-type crossfit">Кроссфит</span> Advanced</td>
+                                <td class="trainer">Дмитрий П.</td>
+                                <td>Зал 4</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Среда -->
+                <div id="wednesday" class="schedule-day">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Занятие</th>
+                                <th>Тренер</th>
+                                <th>Зал</th>
+                                <th>Запись</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>08:00 - 09:00</td>
+                                <td><span class="class-type cycling">Сайклинг</span> Morning Ride</td>
+                                <td class="trainer">Иван М.</td>
+                                <td>Зал 5</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>11:00 - 12:00</td>
+                                <td><span class="class-type yoga">Йога</span> Для начинающих</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>17:30 - 18:30</td>
+                                <td><span class="class-type pilates">Пилатес</span> Реформа</td>
+                                <td class="trainer">Елена К.</td>
+                                <td>Зал 1</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>19:00 - 20:00</td>
+                                <td><span class="class-type dance">Танцы</span> Hip-Hop</td>
+                                <td class="trainer">Мария Л.</td>
+                                <td>Зал 3</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Четверг -->
+                <div id="thursday" class="schedule-day">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Занятие</th>
+                                <th>Тренер</th>
+                                <th>Зал</th>
+                                <th>Запись</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>07:00 - 08:00</td>
+                                <td><span class="class-type yoga">Йога</span> Утренний поток</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>12:00 - 13:00</td>
+                                <td><span class="class-type dance">Танцы</span> Zumba Fitness</td>
+                                <td class="trainer">Мария Л.</td>
+                                <td>Зал 3</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>18:00 - 19:00</td>
+                                <td><span class="class-type crossfit">Кроссфит</span> Functional</td>
+                                <td class="trainer">Дмитрий П.</td>
+                                <td>Зал 4</td>
+                                <td class="full">Группа заполнена</td>
+                            </tr>
+                            <tr>
+                                <td>19:30 - 20:30</td>
+                                <td><span class="class-type cycling">Сайклинг</span> Evening Ride</td>
+                                <td class="trainer">Иван М.</td>
+                                <td>Зал 5</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Пятница -->
+                <div id="friday" class="schedule-day">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Занятие</th>
+                                <th>Тренер</th>
+                                <th>Зал</th>
+                                <th>Запись</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:00 - 10:00</td>
+                                <td><span class="class-type pilates">Пилатес</span> Для начинающих</td>
+                                <td class="trainer">Елена К.</td>
+                                <td>Зал 1</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>16:00 - 17:00</td>
+                                <td><span class="class-type dance">Танцы</span> Латина</td>
+                                <td class="trainer">Мария Л.</td>
+                                <td>Зал 3</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>18:30 - 19:30</td>
+                                <td><span class="class-type cycling">Сайклинг</span> Pro Level</td>
+                                <td class="trainer">Иван М.</td>
+                                <td>Зал 5</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>20:00 - 21:00</td>
+                                <td><span class="class-type yoga">Йога</span> Вечерняя релаксация</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Суббота -->
+                <div id="saturday" class="schedule-day">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Занятие</th>
+                                <th>Тренер</th>
+                                <th>Зал</th>
+                                <th>Запись</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>09:00 - 10:30</td>
+                                <td><span class="class-type yoga">Йога</span> Выходной день</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>11:00 - 12:00</td>
+                                <td><span class="class-type dance">Танцы</span> Zumba Fitness</td>
+                                <td class="trainer">Мария Л.</td>
+                                <td>Зал 3</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>13:00 - 14:00</td>
+                                <td><span class="class-type pilates">Пилатес</span> Для всех</td>
+                                <td class="trainer">Елена К.</td>
+                                <td>Зал 1</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Воскресенье -->
+                <div id="sunday" class="schedule-day">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Время</th>
+                                <th>Занятие</th>
+                                <th>Тренер</th>
+                                <th>Зал</th>
+                                <th>Запись</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10:00 - 11:00</td>
+                                <td><span class="class-type yoga">Йога</span> Воскресное утро</td>
+                                <td class="trainer">Анна С.</td>
+                                <td>Зал 2</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                            <tr>
+                                <td>12:00 - 13:00</td>
+                                <td><span class="class-type cycling">Сайклинг</span> Weekend Ride</td>
+                                <td class="trainer">Иван М.</td>
+                                <td>Зал 5</td>
+                                <td><a href="#" class="button login-button">Записаться</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </section>
         </div>
     </main>
@@ -464,13 +725,50 @@
     </footer>
 
     <script>
-        // Простая функция для переключения табов
-        document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', () => {
-                document.querySelector('.tab-button.active').classList.remove('active');
-                button.classList.add('active');
-                // Здесь можно добавить загрузку данных для выбранного дня
+        document.addEventListener('DOMContentLoaded', function() {
+            // Получаем все кнопки табов
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            // Добавляем обработчик клика для каждой кнопки
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Удаляем класс active у всех кнопок
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Добавляем класс active к текущей кнопке
+                    button.classList.add('active');
+                    
+                    // Получаем ID дня, который нужно показать
+                    const dayToShow = button.getAttribute('data-day');
+                    
+                    // Скрываем все таблицы расписания
+                    document.querySelectorAll('.schedule-day').forEach(day => {
+                        day.classList.remove('active');
+                    });
+                    
+                    // Показываем выбранную таблицу
+                    document.getElementById(dayToShow).classList.add('active');
+                });
             });
+            
+            // Можно добавить автоматическое определение текущего дня недели
+            // и активацию соответствующей вкладки
+            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+            const today = new Date().getDay(); // 0 - воскресенье, 1 - понедельник и т.д.
+            
+            // Если сегодня воскресенье (0), активируем воскресенье
+            if (today >= 0 && today <= 6) {
+                const todayTab = document.querySelector(`.tab-button[data-day="${days[today]}"]`);
+                if (todayTab) {
+                    // Удаляем active у всех
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.schedule-day').forEach(day => day.classList.remove('active'));
+                    
+                    // Активируем текущий день
+                    todayTab.classList.add('active');
+                    document.getElementById(days[today]).classList.add('active');
+                }
+            }
         });
     </script>
 </body>
