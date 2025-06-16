@@ -3,772 +3,958 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Расписание - Фитнес-Хаус</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Фитнес-хаус – Расписание</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
+            --primary: #ff6b6b;
+            --secondary: #4ecdc4;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --gray: #dfe6e9;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
-        
+
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light);
+            color: var(--dark);
             line-height: 1.6;
         }
-        
-        header {
-            background: linear-gradient(135deg, var(--primary), var(--dark));
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
-        
-        nav {
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
-        
-        .logo {
-            font-size: 1.8rem;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+
+        .logo h1 {
+            font-size: 28px;
+            font-weight: 700;
         }
-        
+
+        .fitness {
+            color: var(--primary);
+        }
+
+        .house {
+            color: var(--secondary);
+        }
+
+        .logo p {
+            font-size: 12px;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
         }
-        
+
         nav ul li {
-            margin-left: 1.5rem;
+            margin-left: 30px;
         }
-        
+
         nav ul li a {
-            color: white;
             text-decoration: none;
+            color: var(--dark);
             font-weight: 500;
             transition: color 0.3s;
         }
-        
-        nav ul li a:hover, .active {
-            color: var(--secondary);
-        }
-        
-        .button {
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .login-button {
-            background-color: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-        
-        .login-button:hover {
-            background-color: white;
+
+        nav ul li a:hover {
             color: var(--primary);
         }
-        
-        .register-button {
-            background-color: var(--accent);
-            border: 2px solid var(--accent);
+
+        .btn-signup {
+            background-color: var(--primary);
             color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
         }
-        
-        .register-button:hover {
-            background-color: transparent;
-            color: var(--accent);
+
+        .btn-signup:hover {
+            background-color: #ff5252;
         }
-        
-        main {
-            padding: 3rem 0;
-        }
-        
-        h1, h2 {
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        h1::after, h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary);
-        }
-        
+
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             color: white;
             text-align: center;
-            padding: 5rem 1rem;
-            border-radius: 8px;
-            margin-bottom: 3rem;
+            padding: 100px 0;
         }
-        
-        .hero h1 {
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
             color: white;
-            font-size: 2.5rem;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
         }
-        
-        .hero h1::after {
-            background-color: var(--accent);
+
+        .btn-primary:hover {
+            background-color: #ff5252;
         }
-        
-        .schedule-tabs {
+
+        .schedule {
+            padding: 80px 0;
+        }
+
+        .schedule h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--dark);
+        }
+
+        .tabs {
             display: flex;
             justify-content: center;
-            margin-bottom: 2rem;
+            margin-bottom: 30px;
             flex-wrap: wrap;
-            gap: 0.5rem;
         }
-        
-        .tab-button {
-            padding: 0.8rem 1.5rem;
-            background-color: white;
+
+        .tab-btn {
+            padding: 8px 16px;
+            margin: 0 5px;
+            background: var(--gray);
             border: none;
-            border-radius: 4px;
+            border-radius: 20px;
             cursor: pointer;
-            font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
-        .tab-button:hover, .tab-button.active {
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .schedule-table {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        th {
             background-color: var(--secondary);
             color: white;
         }
-        
-        .schedule-table {
+
+        tr:hover {
+            background-color: rgba(78, 205, 196, 0.1);
+        }
+
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
             width: 100%;
-            border-collapse: collapse;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
             background-color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
         }
-        
-        .schedule-table th, .schedule-table td {
-            padding: 1rem;
-            text-align: center;
-            border: 1px solid #eee;
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
         }
-        
-        .schedule-table th {
-            background-color: var(--primary);
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+        }
+
+        /* Соц. авторизация */
+        .social-auth {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-social {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-social i {
+            font-size: 18px;
+        }
+
+        .google {
+            background: #DB4437;
             color: white;
         }
-        
-        .schedule-table tr:nth-child(even) {
+
+        .vk {
+            background: #0077FF;
+            color: white;
+        }
+
+        .telegram {
+            background: #0088cc;
+            color: white;
+        }
+
+        /* Оплата */
+        .payment-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray);
+        }
+
+        /* Новые элементы */
+        .features {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .testimonials {
+            padding: 80px 0;
             background-color: #f9f9f9;
         }
-        
-        .schedule-table tr:hover {
-            background-color: #f1f1f1;
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 40px auto 0;
+            position: relative;
         }
-        
-        .class-type {
-            display: inline-block;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            display: none;
         }
-        
-        .yoga {
-            background-color: #f39c12;
-            color: white;
+
+        .testimonial.active {
+            display: block;
         }
-        
-        .pilates {
-            background-color: #9b59b6;
-            color: white;
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--secondary);
         }
-        
-        .crossfit {
-            background-color: #e74c3c;
-            color: white;
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
         }
-        
-        .dance {
-            background-color: #3498db;
-            color: white;
-        }
-        
-        .cycling {
-            background-color: #2ecc71;
-            color: white;
-        }
-        
-        .trainer {
-            font-weight: 600;
+
+        .testimonial-author {
+            font-weight: 700;
             color: var(--primary);
         }
-        
-        .full {
-            color: var(--accent);
-            font-weight: 600;
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
-        
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--gray);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+        }
+
+        .achievements {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .achievement-item {
+            padding: 20px;
+        }
+
+        .achievement-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            margin: 60px 0;
+        }
+
+        .progress-title {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background: var(--gray);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+
+        .floating-chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+
+        .floating-chat i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         footer {
             background-color: var(--dark);
             color: white;
-            padding: 2rem 0;
+            padding: 30px 0;
             text-align: center;
         }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-            text-align: left;
-        }
-        
-        .footer-column h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-column ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: var(--secondary);
-        }
-        
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .footer-social a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-social a:hover {
-            color: var(--secondary);
-        }
-        
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1.5rem;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            nav ul li {
-                margin: 0.5rem 0;
-            }
-            
-            .schedule-table {
-                font-size: 0.9rem;
-            }
-            
-            .schedule-table th, .schedule-table td {
-                padding: 0.5rem;
-            }
+
+        .social {
+            margin-top: 20px;
         }
 
-        /* Добавлено: скрытие таблиц по умолчанию */
-        .schedule-day {
-            display: none;
+        .social a {
+            color: white;
+            margin: 0 10px;
+            font-size: 20px;
         }
-        
-        .schedule-day.active {
-            display: block;
+
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero h2 {
+                font-size: 32px;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="container">
+            <div class="logo">
+                <h1><span class="fitness">Фитнес</span>-<span class="house">хаус</span></h1>
+                <p>Тренируйся с комфортом</p>
+            </div>
             <nav>
-                <a href="index.html" class="logo">
-                    <i class="fas fa-dumbbell"></i> Фитнес-Хаус
-                </a>
                 <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="about.html">О нас</a></li>
-                    <li><a href="services.html">Услуги</a></li>
-                    <li><a href="schedule.html" class="active">Расписание</a></li>
-                    <li><a href="contact.html">Контакты</a></li>
+                    <li><a href="#schedule">Расписание</a></li>
+                    <li><a href="#trainers">Тренеры</a></li>
+                    <li><a href="#pricing">Цены</a></li>
+                    <li><a href="#contact">Контакты</a></li>
                 </ul>
-                <div>
-                    <a href="#" class="button login-button">Вход</a>
-                    <a href="#" class="button register-button">Регистрация</a>
-                </div>
             </nav>
+            <button class="btn-signup" id="signupBtn">Записаться</button>
         </div>
     </header>
-    
-    <main>
+
+    <section class="hero">
         <div class="container">
-            <section class="hero">
-                <h1>Расписание занятий</h1>
-                <p>Выберите удобное время для тренировок в нашем фитнес-клубе</p>
-            </section>
-            
-            <section class="schedule">
-                <h2>Групповые занятия</h2>
-                
-                <div class="schedule-tabs">
-                    <button class="tab-button active" data-day="monday">Понедельник</button>
-                    <button class="tab-button" data-day="tuesday">Вторник</button>
-                    <button class="tab-button" data-day="wednesday">Среда</button>
-                    <button class="tab-button" data-day="thursday">Четверг</button>
-                    <button class="tab-button" data-day="friday">Пятница</button>
-                    <button class="tab-button" data-day="saturday">Суббота</button>
-                    <button class="tab-button" data-day="sunday">Воскресенье</button>
-                </div>
-                
-                <!-- Понедельник -->
-                <div id="monday" class="schedule-day active">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Время</th>
-                                <th>Занятие</th>
-                                <th>Тренер</th>
-                                <th>Зал</th>
-                                <th>Запись</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>07:00 - 08:00</td>
-                                <td><span class="class-type yoga">Йога</span> Утренний поток</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>09:00 - 10:00</td>
-                                <td><span class="class-type pilates">Пилатес</span> Для начинающих</td>
-                                <td class="trainer">Елена К.</td>
-                                <td>Зал 1</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>12:00 - 13:00</td>
-                                <td><span class="class-type dance">Танцы</span> Zumba Fitness</td>
-                                <td class="trainer">Мария Л.</td>
-                                <td>Зал 3</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>17:00 - 18:00</td>
-                                <td><span class="class-type crossfit">Кроссфит</span> Functional</td>
-                                <td class="trainer">Дмитрий П.</td>
-                                <td>Зал 4</td>
-                                <td class="full">Группа заполнена</td>
-                            </tr>
-                            <tr>
-                                <td>18:30 - 19:30</td>
-                                <td><span class="class-type cycling">Сайклинг</span> Pro Level</td>
-                                <td class="trainer">Иван М.</td>
-                                <td>Зал 5</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>20:00 - 21:00</td>
-                                <td><span class="class-type yoga">Йога</span> Вечерняя релаксация</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Вторник -->
-                <div id="tuesday" class="schedule-day">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Время</th>
-                                <th>Занятие</th>
-                                <th>Тренер</th>
-                                <th>Зал</th>
-                                <th>Запись</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>07:30 - 08:30</td>
-                                <td><span class="class-type pilates">Пилатес</span> Утренний</td>
-                                <td class="trainer">Елена К.</td>
-                                <td>Зал 1</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>10:00 - 11:00</td>
-                                <td><span class="class-type yoga">Йога</span> Хатха</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>16:00 - 17:00</td>
-                                <td><span class="class-type dance">Танцы</span> Латина</td>
-                                <td class="trainer">Мария Л.</td>
-                                <td>Зал 3</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>18:00 - 19:00</td>
-                                <td><span class="class-type crossfit">Кроссфит</span> Advanced</td>
-                                <td class="trainer">Дмитрий П.</td>
-                                <td>Зал 4</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Среда -->
-                <div id="wednesday" class="schedule-day">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Время</th>
-                                <th>Занятие</th>
-                                <th>Тренер</th>
-                                <th>Зал</th>
-                                <th>Запись</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>08:00 - 09:00</td>
-                                <td><span class="class-type cycling">Сайклинг</span> Morning Ride</td>
-                                <td class="trainer">Иван М.</td>
-                                <td>Зал 5</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>11:00 - 12:00</td>
-                                <td><span class="class-type yoga">Йога</span> Для начинающих</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>17:30 - 18:30</td>
-                                <td><span class="class-type pilates">Пилатес</span> Реформа</td>
-                                <td class="trainer">Елена К.</td>
-                                <td>Зал 1</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>19:00 - 20:00</td>
-                                <td><span class="class-type dance">Танцы</span> Hip-Hop</td>
-                                <td class="trainer">Мария Л.</td>
-                                <td>Зал 3</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Четверг -->
-                <div id="thursday" class="schedule-day">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Время</th>
-                                <th>Занятие</th>
-                                <th>Тренер</th>
-                                <th>Зал</th>
-                                <th>Запись</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>07:00 - 08:00</td>
-                                <td><span class="class-type yoga">Йога</span> Утренний поток</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>12:00 - 13:00</td>
-                                <td><span class="class-type dance">Танцы</span> Zumba Fitness</td>
-                                <td class="trainer">Мария Л.</td>
-                                <td>Зал 3</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>18:00 - 19:00</td>
-                                <td><span class="class-type crossfit">Кроссфит</span> Functional</td>
-                                <td class="trainer">Дмитрий П.</td>
-                                <td>Зал 4</td>
-                                <td class="full">Группа заполнена</td>
-                            </tr>
-                            <tr>
-                                <td>19:30 - 20:30</td>
-                                <td><span class="class-type cycling">Сайклинг</span> Evening Ride</td>
-                                <td class="trainer">Иван М.</td>
-                                <td>Зал 5</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Пятница -->
-                <div id="friday" class="schedule-day">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Время</th>
-                                <th>Занятие</th>
-                                <th>Тренер</th>
-                                <th>Зал</th>
-                                <th>Запись</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>09:00 - 10:00</td>
-                                <td><span class="class-type pilates">Пилатес</span> Для начинающих</td>
-                                <td class="trainer">Елена К.</td>
-                                <td>Зал 1</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>16:00 - 17:00</td>
-                                <td><span class="class-type dance">Танцы</span> Латина</td>
-                                <td class="trainer">Мария Л.</td>
-                                <td>Зал 3</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>18:30 - 19:30</td>
-                                <td><span class="class-type cycling">Сайклинг</span> Pro Level</td>
-                                <td class="trainer">Иван М.</td>
-                                <td>Зал 5</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>20:00 - 21:00</td>
-                                <td><span class="class-type yoga">Йога</span> Вечерняя релаксация</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Суббота -->
-                <div id="saturday" class="schedule-day">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Время</th>
-                                <th>Занятие</th>
-                                <th>Тренер</th>
-                                <th>Зал</th>
-                                <th>Запись</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>09:00 - 10:30</td>
-                                <td><span class="class-type yoga">Йога</span> Выходной день</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>11:00 - 12:00</td>
-                                <td><span class="class-type dance">Танцы</span> Zumba Fitness</td>
-                                <td class="trainer">Мария Л.</td>
-                                <td>Зал 3</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>13:00 - 14:00</td>
-                                <td><span class="class-type pilates">Пилатес</span> Для всех</td>
-                                <td class="trainer">Елена К.</td>
-                                <td>Зал 1</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <!-- Воскресенье -->
-                <div id="sunday" class="schedule-day">
-                    <table class="schedule-table">
-                        <thead>
-                            <tr>
-                                <th>Время</th>
-                                <th>Занятие</th>
-                                <th>Тренер</th>
-                                <th>Зал</th>
-                                <th>Запись</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>10:00 - 11:00</td>
-                                <td><span class="class-type yoga">Йога</span> Воскресное утро</td>
-                                <td class="trainer">Анна С.</td>
-                                <td>Зал 2</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                            <tr>
-                                <td>12:00 - 13:00</td>
-                                <td><span class="class-type cycling">Сайклинг</span> Weekend Ride</td>
-                                <td class="trainer">Иван М.</td>
-                                <td>Зал 5</td>
-                                <td><a href="#" class="button login-button">Записаться</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
+            <h2>Ваше идеальное тело начинается здесь</h2>
+            <p>Гибкий график, профессиональные тренеры и лучшие программы</p>
+            <button class="btn-primary" id="heroSignupBtn">Записаться онлайн</button>
         </div>
-    </main>
-    
-    <footer>
+    </section>
+
+    <section class="features">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Контакты</h3>
-                    <ul>
-                        <li>г. Москва, ул. Спортивная, 15</li>
-                        <li>+7 (495) 123-45-67</li>
-                        <li>info@fitnesshouse.ru</li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Часы работы</h3>
-                    <ul>
-                        <li>Пн-Пт: 7:00 - 23:00</li>
-                        <li>Сб-Вс: 8:00 - 22:00</li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Соцсети</h3>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-vk"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-telegram"></i></a>
+            <h2>Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
                     </div>
+                    <h3>Современное оборудование</h3>
+                    <p>Тренажеры последнего поколения от ведущих мировых производителей</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Профессиональные тренеры</h3>
+                    <p>Сертифицированные специалисты с опытом работы от 5 лет</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Индивидуальный подход</h3>
+                    <p>Персональные программы тренировок и питания для каждого клиента</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Дружелюбная атмосфера</h3>
+                    <p>Комфортная среда для достижения ваших спортивных целей</p>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 Фитнес-Хаус. Все права защищены.</p>
+        </div>
+    </section>
+
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <h2>Расписание занятий</h2>
+            <div class="tabs">
+                <button class="tab-btn active" data-day="all">Все дни</button>
+                <button class="tab-btn" data-day="mon">Пн</button>
+                <button class="tab-btn" data-day="tue">Вт</button>
+                <button class="tab-btn" data-day="wed">Ср</button>
+                <button class="tab-btn" data-day="thu">Чт</button>
+                <button class="tab-btn" data-day="fri">Пт</button>
+                <button class="tab-btn" data-day="sat">Сб</button>
+                <button class="tab-btn" data-day="sun">Вс</button>
+            </div>
+            <div class="schedule-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Время</th>
+                            <th class="mon">Понедельник</th>
+                            <th class="tue">Вторник</th>
+                            <th class="wed">Среда</th>
+                            <th class="thu">Четверг</th>
+                            <th class="fri">Пятница</th>
+                            <th class="sat">Суббота</th>
+                            <th class="sun">Воскресенье</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody">
+                        <!-- Данные загружаются через JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2>Отзывы наших клиентов</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial active">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Анна" class="testimonial-avatar">
+                    <p class="testimonial-text">"Занимаюсь в Фитнес-хаусе уже год. За это время не только похудела на 15 кг, но и полностью изменила образ жизни. Тренеры - настоящие профессионалы!"</p>
+                    <p class="testimonial-author">Анна, 28 лет</p>
+                </div>
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Дмитрий" class="testimonial-avatar">
+                    <p class="testimonial-text">"Лучший фитнес-клуб в городе! Современное оборудование, чистота и приятная атмосфера. Особенно нравятся групповые занятия по кроссфиту."</p>
+                    <p class="testimonial-author">Дмитрий, 35 лет</p>
+                </div>
+                <div class="testimonial">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Екатерина" class="testimonial-avatar">
+                    <p class="testimonial-text">"После рождения ребенка долго не могла прийти в форму. Благодаря персональным тренировкам с Алиной за 3 месяца вернула прежнюю фигуру!"</p>
+                    <p class="testimonial-author">Екатерина, 31 год</p>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements">
+        <div class="container">
+            <h2>Наши достижения</h2>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-number" id="clients-count">0</div>
+                    <p>Довольных клиентов</p>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number" id="trainings-count">0</div>
+                    <p>Проведенных тренировок</p>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number" id="trainers-count">0</div>
+                    <p>Профессиональных тренеров</p>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number" id="years-count">0</div>
+                    <p>Лет успешной работы</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="progress-container">
+        <div class="container">
+            <h2>Наши текущие проекты</h2>
+            <div class="progress-title">
+                <span>Реконструкция бассейна</span>
+                <span id="pool-progress-value">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="pool-progress"></div>
+            </div>
+            
+            <div class="progress-title">
+                <span>Открытие детской зоны</span>
+                <span id="kids-progress-value">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="kids-progress"></div>
+            </div>
+            
+            <div class="progress-title">
+                <span>Новые тренажеры</span>
+                <span id="equipment-progress-value">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="equipment-progress"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно записи -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Запись на тренировку</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="name">Ваше имя:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон:</label>
+                    <input type="tel" id="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+                </div>
+                <div class="form-group">
+                    <label for="training">Выберите тренировку:</label>
+                    <select id="training" required>
+                        <option value="">-- Выберите --</option>
+                        <option value="Йога">Йога</option>
+                        <option value="Кроссфит">Кроссфит</option>
+                        <option value="TRX">TRX</option>
+                        <option value="Бокс">Бокс</option>
+                        <option value="Персональная">Персональная</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Дата:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="payment-section">
+                    <h3>Оплата</h3>
+                    <div id="payment-element">
+                        <p>Оплата при посещении или онлайн</p>
+                    </div>
+                    <button type="submit" class="btn-primary">Забронировать</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно авторизации -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Войти или зарегистрироваться</h2>
+            <div class="social-auth">
+                <button class="btn-social telegram" id="telegramAuth">
+                    <i class="fab fa-telegram"></i> Написать в Telegram
+                </button>
+                <button class="btn-social google" id="googleAuth">
+                    <i class="fab fa-google"></i> Google
+                </button>
+                <button class="btn-social vk" id="vkAuth">
+                    <i class="fab fa-vk"></i> VK
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-chat" id="floatingChat">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Фитнес-хаус. Все права защищены.</p>
+            <div class="social">
+                <a href="#" id="instagramLink"><i class="fab fa-instagram"></i></a>
+                <a href="#" id="vkLink"><i class="fab fa-vk"></i></a>
+                <a href="#" id="telegramLink"><i class="fab fa-telegram"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Получаем все кнопки табов
-            const tabButtons = document.querySelectorAll('.tab-button');
-            
-            // Добавляем обработчик клика для каждой кнопки
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Удаляем класс active у всех кнопок
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
+            // Инициализация соц. ссылок
+            document.getElementById('instagramLink').href = "https://instagram.com/fitnesshouse";
+            document.getElementById('vkLink').href = "https://vk.com/fitnesshouse";
+            document.getElementById('telegramLink').href = "https://t.me/FitnessHouseChannel";
+
+            // Данные расписания
+            const scheduleData = [
+                { time: '7:00-8:00', mon: 'Йога', tue: 'Функц. тренинг', wed: 'Кроссфит', thu: 'Пилатес', fri: 'Стретчинг', sat: 'Йога', sun: 'Кардио-зарядка' },
+                { time: '9:00-10:00', mon: 'TRX', tue: 'Zumba', wed: 'Бокс', thu: 'Силовая', fri: 'Танцы', sat: 'Фитбол', sun: 'Круговая' },
+                { time: '12:00-13:00', mon: 'Фитнес-микс', tue: 'Стретчинг', wed: 'Йога', thu: 'HIIT', fri: 'TRX', sat: 'Бодипамп', sun: 'Пилатес' },
+                { time: '18:00-19:00', mon: 'Бокс', tue: 'Кроссфит', wed: 'Танцы', thu: 'Силовая', fri: 'Йога', sat: 'Функц. тренинг', sun: 'Zumba' },
+                { time: '20:00-21:00', mon: 'Стретчинг', tue: 'Йога', wed: 'TRX', thu: 'Кардио', fri: 'Пилатес', sat: 'Стретчинг', sun: 'Релакс-йога' }
+            ];
+
+            // Заполнение таблицы
+            const tableBody = document.getElementById('scheduleBody');
+            scheduleData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.time}</td>
+                    <td class="mon">${row.mon}</td>
+                    <td class="tue">${row.tue}</td>
+                    <td class="wed">${row.wed}</td>
+                    <td class="thu">${row.thu}</td>
+                    <td class="fri">${row.fri}</td>
+                    <td class="sat">${row.sat}</td>
+                    <td class="sun">${row.sun}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            // Фильтрация по дням
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
                     
-                    // Добавляем класс active к текущей кнопке
-                    button.classList.add('active');
+                    const day = this.getAttribute('data-day');
+                    const rows = document.querySelectorAll('tbody tr');
                     
-                    // Получаем ID дня, который нужно показать
-                    const dayToShow = button.getAttribute('data-day');
-                    
-                    // Скрываем все таблицы расписания
-                    document.querySelectorAll('.schedule-day').forEach(day => {
-                        day.classList.remove('active');
+                    rows.forEach(row => {
+                        if (day === 'all') {
+                            row.style.display = '';
+                        } else {
+                            const cells = row.querySelectorAll('td');
+                            let showRow = false;
+                            cells.forEach((cell, index) => {
+                                if (index > 0 && cell.classList.contains(day) && cell.textContent.trim() !== '') {
+                                    showRow = true;
+                                }
+                            });
+                            row.style.display = showRow ? '' : 'none';
+                        }
                     });
-                    
-                    // Показываем выбранную таблицу
-                    document.getElementById(dayToShow).classList.add('active');
                 });
             });
-            
-            // Можно добавить автоматическое определение текущего дня недели
-            // и активацию соответствующей вкладки
-            const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-            const today = new Date().getDay(); // 0 - воскресенье, 1 - понедельник и т.д.
-            
-            // Если сегодня воскресенье (0), активируем воскресенье
-            if (today >= 0 && today <= 6) {
-                const todayTab = document.querySelector(`.tab-button[data-day="${days[today]}"]`);
-                if (todayTab) {
-                    // Удаляем active у всех
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.schedule-day').forEach(day => day.classList.remove('active'));
-                    
-                    // Активируем текущий день
-                    todayTab.classList.add('active');
-                    document.getElementById(days[today]).classList.add('active');
-                }
+
+            // Модальные окна
+            const modal = document.getElementById('signup-modal');
+            const authModal = document.getElementById('auth-modal');
+            const signupBtn = document.getElementById('signupBtn');
+            const heroSignupBtn = document.getElementById('heroSignupBtn');
+            const closeBtns = document.querySelectorAll('.close');
+
+            // Открытие модалки записи
+            function openSignupModal() {
+                authModal.style.display = 'block';
             }
+
+            signupBtn.addEventListener('click', openSignupModal);
+            heroSignupBtn.addEventListener('click', openSignupModal);
+
+            // Закрытие модалок
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                    authModal.style.display = 'none';
+                });
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) modal.style.display = 'none';
+                if (e.target === authModal) authModal.style.display = 'none';
+            });
+
+            // Кнопка Telegram - открытие чата
+            const telegramAuthBtn = document.getElementById('telegramAuth');
+            telegramAuthBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const phoneNumber = '79362153895'; // Ваш номер телефона
+                const message = "Здравствуйте! Я хочу записаться на тренировку в Фитнес-хаус. Пожалуйста, предоставьте мне больше информации.";
+                
+                // Открытие Telegram с предзаполненным сообщением
+                window.open(`https://t.me/+${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+                
+                // Закрытие модального окна
+                authModal.style.display = 'none';
+            });
+
+            // Отправка формы
+            const signupForm = document.getElementById('signupForm');
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const userData = {
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    training: document.getElementById('training').value,
+                    date: document.getElementById('date').value
+                };
+
+                // Валидация телефона
+                if (!/^[\d\+]{11,}$/.test(userData.phone)) {
+                    alert("Пожалуйста, введите корректный номер телефона (минимум 11 цифр)");
+                    return;
+                }
+
+                // Формирование сообщения для Telegram
+                const message = `Новая запись в Фитнес-хаус!\n\nИмя: ${userData.name}\nТелефон: ${userData.phone}\nТренировка: ${userData.training}\nДата: ${userData.date}`;
+                
+                // Открытие Telegram с предзаполненным сообщением
+                window.open(`https://t.me/+79362153895?text=${encodeURIComponent(message)}`, '_blank');
+                
+                // Сообщение пользователю
+                alert(`Спасибо, ${userData.name}! Вы записаны на ${userData.training}. Мы свяжемся с вами по номеру ${userData.phone}.`);
+                
+                // Закрытие модального окна и сброс формы
+                modal.style.display = 'none';
+                signupForm.reset();
+            });
+
+            // Слайдер отзывов
+            const testimonials = document.querySelectorAll('.testimonial');
+            const dots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+
+            function showSlide(n) {
+                testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                currentSlide = (n + testimonials.length) % testimonials.length;
+                testimonials[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+
+            // Автоматическая смена слайдов
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 5000);
+
+            // Анимация счетчиков
+            function animateValue(id, start, end, duration) {
+                const obj = document.getElementById(id);
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    obj.innerHTML = Math.floor(progress * (end - start) + start);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            // Запуск анимации при прокрутке до секции
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateValue('clients-count', 0, 1250, 2000);
+                        animateValue('trainings-count', 0, 9870, 2000);
+                        animateValue('trainers-count', 0, 15, 1000);
+                        animateValue('years-count', 0, 7, 1000);
+                        
+                        // Анимация прогресс-баров
+                        setTimeout(() => {
+                            document.getElementById('pool-progress').style.width = '75%';
+                            document.getElementById('pool-progress-value').textContent = '75%';
+                            
+                            document.getElementById('kids-progress').style.width = '45%';
+                            document.getElementById('kids-progress-value').textContent = '45%';
+                            
+                            document.getElementById('equipment-progress').style.width = '90%';
+                            document.getElementById('equipment-progress-value').textContent = '90%';
+                        }, 500);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(document.querySelector('.achievements'));
+
+            // Плавающий чат
+            const floatingChat = document.getElementById('floatingChat');
+            floatingChat.addEventListener('click', function() {
+                const phoneNumber = '79362153895';
+                const message = "Здравствуйте! У меня вопрос по поводу занятий в вашем фитнес-клубе.";
+                window.open(`https://t.me/+${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+            });
         });
     </script>
 </body>
